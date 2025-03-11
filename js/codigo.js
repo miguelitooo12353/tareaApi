@@ -73,7 +73,7 @@ function mostrarTransformaciones(id, nombre) {
                 });
             } else {
                 const pNoTransformaciones = document.createElement('p');
-                pNoTransformaciones.textContent = 'Este personaje no tiene transformaciones registradas.';
+                pNoTransformaciones.textContent = 'Este personaje no tiene transformaciones';
                 modalCuerpo.appendChild(pNoTransformaciones);
             }
 
