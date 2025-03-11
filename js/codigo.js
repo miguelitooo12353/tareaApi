@@ -16,20 +16,20 @@ fetch(url)
             const h3 = document.createElement('h3');
             h3.textContent = character.name;
 
-            const pRaza = document.createElement('p');
+            const LaRaza = document.createElement('p');
             pRaza.textContent = `Raza: ${character.race}`;
 
-            const pGenero = document.createElement('p');
+            const ElGenero = document.createElement('p');
             pGenero.textContent = `Genero: ${character.gender}`
             
-            const pKi = document.createElement('p');
+            const Ki = document.createElement('p');
             pGenero.textContent = `Ki: ${character.ki}`;
 
             card.appendChild(img);
             card.appendChild(h3);
-            card.appendChild(pRaza);
-            card.appendChild(pGenero);
-            card.appendChild(pKi);
+            card.appendChild(LaRaza);
+            card.appendChild(ElGenero);
+            card.appendChild(Ki);
 
             card.onclick = () => mostrarTransformaciones(character.id, character.name);
             container.appendChild(card);
@@ -55,18 +55,18 @@ function mostrarTransformaciones(id, nombre) {
                     const divTrans = document.createElement('div');
                     divTrans.classList.add('carta');
 
-                    const imgTrans = document.createElement('img');
-                    imgTrans.src = transformation.image;
-                    imgTrans.alt = transformation.name;
-                    imgTrans.classList.add('transformation-img');
+                    const imgT = document.createElement('img');
+                    imgT.src = transformation.image;
+                    imgT.alt = transformation.name;
+                    imgT.classList.add('transformation-img');
 
-                    const pNombreTrans = document.createElement('p');
-                    pNombreTrans.innerHTML = `<b>${transformation.name}</b>`;
+                    const NombreTrans = document.createElement('p');
+                    NombreTrans.innerHTML = `<b>${transformation.name}</b>`;
 
             
 
-                    divTrans.appendChild(imgTrans);
-                    divTrans.appendChild(pNombreTrans);
+                    divTrans.appendChild(imgT);
+                    divTrans.appendChild(NombreTrans);
                     
 
                     modalCuerpo.appendChild(divTrans);
