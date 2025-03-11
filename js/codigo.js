@@ -17,13 +17,13 @@ fetch(url)
             h3.textContent = character.name;
 
             const LaRaza = document.createElement('p');
-            pRaza.textContent = `Raza: ${character.race}`;
+            LaRaza.textContent = `Raza: ${character.race}`;
 
             const ElGenero = document.createElement('p');
-            pGenero.textContent = `Genero: ${character.gender}`
+            ElGenero.textContent = `Genero: ${character.gender}`
             
             const Ki = document.createElement('p');
-            pGenero.textContent = `Ki: ${character.ki}`;
+            Ki.textContent = `Ki: ${character.ki}`;
 
             card.appendChild(img);
             card.appendChild(h3);
@@ -50,7 +50,7 @@ function mostrarTransformaciones(id, nombre) {
             modalTitulo.textContent = `Transformaciones de ${nombre}`;
             modalCuerpo.innerHTML = '';
 
-            if(Array.isArray(character.transformations) && character.transformations.length > 0) {
+            if((character.transformations) && character.transformations.length > 0) {
                 character.transformations.forEach(transformation => {
                     const divTrans = document.createElement('div');
                     divTrans.classList.add('carta');
