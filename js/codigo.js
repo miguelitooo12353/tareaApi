@@ -50,7 +50,7 @@ function mostrarTransformaciones(id, nombre) {
             modalTitulo.textContent = `Transformaciones de ${nombre}`;
             modalCuerpo.innerHTML = '';
 
-            if ((character.transformations) && character.transformations.length > 0) {
+            if((character.transformations) && character.transformations.length > 0) {
                 character.transformations.forEach(transformation => {
                     const divTrans = document.createElement('div');
                     divTrans.classList.add('carta');
