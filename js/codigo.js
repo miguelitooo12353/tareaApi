@@ -3,27 +3,27 @@ const url = 'https://dragonball-api.com/api/characters?page=1&limit=58';
 fetch(url)
     .then(response => response.json())
     .then(data => {
-        const container = document.getElementById('characters');
+        const container = document.getElementById('pesonajesD');
 
-        data.items.forEach(character => {
+        data.items.forEach(personaje => {
             const card = document.createElement('div');
-            card.classList.add('card');
+            card.classList.add('col');
 
             const img = document.createElement('img');
-            img.src = character.image;
-            img.alt = character.name;
+            img.src = personaje.image;
+        
 
             const h3 = document.createElement('h3');
-            h3.textContent = character.name;
+            h3.textContent = personaje.name;
 
             const LaRaza = document.createElement('p');
-            LaRaza.textContent = `Raza: ${character.race}`;
+            LaRaza.textContent = `Raza: ${personaje.race}`;
 
             const ElGenero = document.createElement('p');
-            ElGenero.textContent = `Genero: ${character.gender}`
+            ElGenero.textContent = `Genero: ${personaje.gender}`
             
             const Ki = document.createElement('p');
-            Ki.textContent = `Ki: ${character.ki}`;
+            Ki.textContent = `Ki: ${personaje.ki}`;
 
             card.appendChild(img);
             card.appendChild(h3);
@@ -31,7 +31,7 @@ fetch(url)
             card.appendChild(ElGenero);
             card.appendChild(Ki);
 
-            card.onclick = () => mostrarTransformaciones(character.id, character.name);
+            card.onclick = () => mostrarTransformaciones(personaje.id, personaje.name);
             container.appendChild(card);
         });
     })
@@ -42,7 +42,7 @@ function mostrarTransformaciones(id, nombre) {
 
     fetch(urlTransformaciones)
         .then(response => response.json())
-        .then(character => {
+        .then(personaje => {
             const modal = document.getElementById('modal');
             const modalTitulo = document.getElementById('modalT');
             const modalCuerpo = document.getElementById('cuerpo');
@@ -50,36 +50,36 @@ function mostrarTransformaciones(id, nombre) {
             modalTitulo.textContent = `Transformaciones de ${nombre}`;
             modalCuerpo.innerHTML = '';
 
-            if((character.transformations) && character.transformations.length > 0) {
-                character.transformations.forEach(transformation => {
-                    const divTrans = document.createElement('div');
-                    divTrans.classList.add('carta');
+            if((personaje.transformations) && personaje.transformations.length > 0) {
+                personaje.transformations.forEach(transformation => {
+                    const divT = document.createElement('div');
+                    divT.classList.add('carta');
 
                     const imgT = document.createElement('img');
                     imgT.src = transformation.image;
                     imgT.alt = transformation.name;
                     imgT.classList.add('transformation-img');
 
-                    const NombreTrans = document.createElement('p');
-                    NombreTrans.innerHTML = `<b>${transformation.name}</b>`;
+                    const nombreTrans = document.createElement('p');
+                    nombreTrans.innerHTML = `${transformation.name}`;
 
             
 
-                    divTrans.appendChild(imgT);
-                    divTrans.appendChild(NombreTrans);
+                    divT.appendChild(imgT);
+                    divT.appendChild(nombreTrans);
                     
 
-                    modalCuerpo.appendChild(divTrans);
+                    modalCuerpo.appendChild(divT);
                 });
             } else {
-                const pNoTransformaciones = document.createElement('p');
-                pNoTransformaciones.textContent = 'Este personaje no tiene transformaciones';
-                modalCuerpo.appendChild(pNoTransformaciones);
+                const NoTransformaciones = document.createElement('p');
+                NoTransformaciones.textContent = 'Este personaje no tiene transformaciones';
+                modalCuerpo.appendChild(NoTransformaciones);
             }
 
             modal.style.display = 'flex';
         })
-        .catch(error => console.error('Error al obtener transformaciones:', error));
+        .catch(error => console.log('Error al obtener transformaciones:', error));
 }
 
 
